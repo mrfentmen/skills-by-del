@@ -26,11 +26,12 @@ and client-config instructions.
 | `mcp-servers/ifdb/` | Search the Interactive Fiction Database, get game details (ratings, downloads, play-online links), sort by highest rated | No |
 | `mcp-servers/know-your-meme/` | Search Know Your Meme, get a meme's origin, meaning, and spread | No |
 | `mcp-servers/mobygames/` | Search MobyGames, get full game details (developers, publishers, releases, genres) | Yes — free key via `MOBYGAMES_API_KEY` |
+| `mcp-servers/demozoo/` | Search Demozoo's demoscene database (productions, parties), get details with download links | No |
 
 Quick start per server:
 
 ```bash
-cd mcp-servers/ifdb   # or know-your-meme / mobygames
+cd mcp-servers/ifdb   # or know-your-meme / mobygames / demozoo
 npm install
 npm run build
 node dist/index.js
@@ -45,3 +46,8 @@ node dist/index.js
   if fields come back empty.
 - **mobygames** — compiles; request shapes follow the official API docs, but no
   live calls were made (needs your free API key from mobygames.com).
+- **demozoo** — compiles; stdio handshake, `tools/list`, and error paths
+  verified live. Endpoint shapes verified from real-world API consumers
+  (official docs site was unreachable at build time), but **no live API
+  calls were made** — run `search_productions` once against the real API to
+  confirm response parsing.
